@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableHighlight } from 'react-native';
 
 export default function Button(props) {
   return (
-    <TouchableHighlight style={styles.button}>
+    <TouchableHighlight style={styles.button} onPress={props.onPress}>
       <Text style={styles.buttonText}>{props.text}</Text>
     </TouchableHighlight>
   );
