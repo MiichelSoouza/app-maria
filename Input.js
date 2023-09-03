@@ -3,8 +3,11 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 export default function Input(props) {
   return (
     <View>
-          <Text style={styles.inputLabel}>{props.label}</Text>
-          <TextInput style={styles.input}/>
+      <Text style={styles.inputLabel}>{props.label}</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={props.onChangeText}
+      />
     </View>
   );
 }

@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { useState, useCallback } from 'react'
 
 const logo = require("../assets/logo.png")
 const mascot = require("../assets/mascot.png")
@@ -8,6 +9,31 @@ import Input from "../Input"
 import Button from "../Button"
 
 export default function LoginScreen(props) {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [valid, setValid] = useState(email !== '' && password !== '')
+
+  const onSubmit = useCallback(() => {
+    if (!valid) {
+      return;
+    }
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: {
+        email,
+        password
+      }
+    })
+      .then(() => {
+        props.navigation.navigate('Home')
+      })
+      .catch((error) => {
+        alert(error)
+      })
+
+  }, [props.navigation, email, password, valid])
+
   return (
     <View style={styles.container}>
         <Image source={logo} />  
@@ -17,20 +43,27 @@ export default function LoginScreen(props) {
         <View style={styles.form}>
           <View style={styles.box}>  
               <View style={styles.inputs}>
-              <Input label="E-MAIL"/>
-              <Input label="SENHA"/>
+                <Input label="E-MAIL" onChangeText={email => {
+                  setEmail(email)
+                  setValid(email !== '' && password !== "")
+                }}/>
+
+                <Input label="SENHA" onChangeText={password => {
+                  setPassword(password)
+                  setValid(email !== '' && password !== "")
+                }}/>
               </View>
               
-              <Button text="ENTRAR" onPress={
-                () => props.navigation.navigate('Cadastro')
-              }/>
+              <Button text="ENTRAR" onPress={onSubmit} disabled={!valid}/>
           </View>
 
-          <View style={styles.signInBox}>
-              <Text style={styles.signInText}>
-              Não tem uma conta? {"\n"} Cadastre-se
-              </Text>
-          </View>
+          <TouchableHighlight style={styles.signInBox} onPress={() => {
+            props.navigation.navigate('Cadastro')
+          }}>
+            <Text style={styles.signInText}>
+            Não tem uma conta? {"\n"} Cadastre-se
+            </Text>
+          </TouchableHighlight>
         </View>
 
         <Image source={mascot} />
