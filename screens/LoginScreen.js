@@ -80,8 +80,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       padding: 53,
-      gap: 24,
-  
+      gap: 24,  
     },
     
     welcome:{

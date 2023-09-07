@@ -1,15 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
+const mascot = require("../assets/mascot.png")
 
-export default function  CadastroScreen() {
+export default function CadastroScreen() {
   return (
-    <View style={styles.container}>
-        <Text>Cadastro</Text>
-        <StatusBar style="light" />
-        <View style={styles.box}>
-        <View style={styles.boxInfo}></View>
-        </View>
+    <View style={styles.container}>      
+      <StatusBar style="light" />
+      <View style={styles.circle}></View>
     </View>
   );
 }
@@ -17,22 +15,22 @@ export default function  CadastroScreen() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#FFF',
+      backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      padding: 53,
+      gap: 24,
+    },
+    circle:{
+      backgroundColor: '#691030',
+      width: 52,
+      height: 52,
+      borderRadius: 100
     },
     box: {
-      backgroundColor: '#691030',
-      borderRadius: 32,
-      height: 606,
-      width: 322,
-      padding: 46
-    },
-    boxInfo:{
-      backgroundColor:"#E4E2E2",
-      padding:19,
-      width: "100%",
-     
+      backgroundColor: '#D9D9D9',
+      width: 52,
+      height: 52,
     }
 });
   
