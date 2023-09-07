@@ -8,6 +8,9 @@ export default function CadastroScreen() {
     <View style={styles.container}>      
       <StatusBar style="light" />
       <View style={styles.circle}></View>
+      <View style={styles.bigBox}>
+      <View style={styles.box}></View>
+      </View>
     </View>
   );
 }
@@ -18,19 +21,29 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: 53,
-      gap: 24,
+      gap: 5,
     },
+
     circle:{
       backgroundColor: '#691030',
       width: 52,
       height: 52,
-      borderRadius: 100
+      borderRadius: 100,
+      paddingLeft: 50
     },
-    box: {
-      backgroundColor: '#D9D9D9',
-      width: 52,
-      height: 52,
+    bigBox: {
+      backgroundColor: '#691030',
+      width: 322,
+      height: 606
+    },
+    box:{
+      form: {
+        width: 32,
+        height: 542,
+        borderRadius: 25,
+        backgroundColor: '#D9D9D9',
+      },
+
     }
 });
   
